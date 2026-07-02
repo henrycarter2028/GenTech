@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GenTech | Tech Confidence for Seniors</title>
+  <meta name="description" content="GenTech is a student-founded nonprofit helping senior citizens across the DMV Area use technology with confidence, safety, and independence." />
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <style>
+    :root{
+      --navy:#0A2540;
+      --blue:#2563EB;
+      --cyan:#38BDF8;
+      --green:#22C55E;
+      --mint:#EAFBF2;
+      --sky:#EEF7FF;
+      --cream:#FBFAF6;
+      --ink:#172033;
+      --muted:#64748B;
+      --line:rgba(10,37,64,.12);
+      --white:#fff;
+      --shadow:0 24px 70px rgba(10,37,64,.14);
+      --soft:0 12px 35px rgba(10,37,64,.08);
+      --radius:28px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 0 0, rgba(56,189,248,.18), transparent 30rem),
+        radial-gradient(circle at 100% 12%, rgba(34,197,94,.13), transparent 28rem),
+        var(--cream);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1180px;margin:0 auto;padding:0 24px}
+
+    .topbar{
+      position:sticky;top:0;z-index:1000;
+      background:rgba(255,255,255,.84);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px
+    }
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;color:var(--navy);letter-spacing:-.04em;font-size:1.35rem}
+    .mark{
+      width:46px;height:46px;border-radius:16px;
+      background:linear-gradient(135deg,var(--blue),var(--cyan) 55%,var(--green));
+      display:grid;place-items:center;color:white;
+      box-shadow:0 14px 28px rgba(37,99,235,.28);
+      position:relative;overflow:hidden;
+    }
+    .mark:after{content:"";position:absolute;width:20px;height:20px;border:3px solid rgba(255,255,255,.8);border-radius:50%;right:5px;bottom:5px}
+    .links{display:flex;align-items:center;gap:24px;color:var(--muted);font-weight:800;font-size:.94rem}
+    .links a:hover{color:var(--blue)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      border:0;border-radius:999px;background:var(--blue);color:#fff;
+      padding:14px 20px;font-weight:900;box-shadow:0 14px 32px rgba(37,99,235,.28);
+      cursor:pointer;transition:.2s ease;font-size:.96rem;
+    }
+    .btn:hover{transform:translateY(-2px);box-shadow:0 18px 42px rgba(37,99,235,.34)}
+    .btn.ghost{background:white;color:var(--navy);box-shadow:none;border:1px solid var(--line)}
+    .btn.dark{background:var(--navy);box-shadow:0 16px 36px rgba(10,37,64,.24)}
+
+    .hero{padding:82px 0 56px}
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:58px;align-items:center}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:9px;
+      color:var(--blue);font-weight:950;text-transform:uppercase;letter-spacing:.13em;
+      font-size:.78rem;margin-bottom:18px;
+    }
+    .eyebrow:before{content:"";width:10px;height:10px;background:var(--green);border-radius:50%;box-shadow:0 0 0 6px rgba(34,197,94,.13)}
+    h1{
+      color:var(--navy);font-size:clamp(3rem,6.5vw,6.3rem);line-height:.9;
+      letter-spacing:-.085em;margin:0 0 24px;
+    }
+    .lead{font-size:1.22rem;color:var(--muted);max-width:650px;margin:0 0 32px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:36px}
+    .trust-row{display:flex;gap:14px;flex-wrap:wrap}
+    .pill{background:white;border:1px solid var(--line);border-radius:999px;padding:10px 14px;color:var(--navy);font-weight:850;box-shadow:0 8px 20px rgba(10,37,64,.05);font-size:.9rem}
+
+    .visual{
+      background:white;border-radius:42px;padding:18px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+      border:1px solid rgba(10,37,64,.08);
+    }
+    .visual-inner{
+      min-height:520px;border-radius:32px;
+      background:
+        linear-gradient(rgba(10,37,64,.05),rgba(10,37,64,.05)),
+        url('https://images.unsplash.com/photo-1581579438747-104c53d7fbc4?auto=format&fit=crop&w=1400&q=80') center/cover;
+      position:relative;overflow:hidden;
+    }
+    .visual-inner:after{
+      content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,37,64,.04),rgba(10,37,64,.68));
+    }
+    .floating-card{
+      position:absolute;z-index:2;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,.5);box-shadow:0 18px 48px rgba(10,37,64,.22);
+      border-radius:24px;padding:18px;color:var(--navy)
+    }
+    .fc1{left:22px;top:26px;max-width:235px}
+    .fc2{right:22px;bottom:26px;max-width:250px}
+    .fc3{left:32px;bottom:34px;display:flex;gap:10px;align-items:center}
+    .floating-card strong{display:block;font-size:1rem;margin-bottom:4px}
+    .floating-card span{color:var(--muted);font-weight:700;font-size:.88rem}
+    .check{width:34px;height:34px;border-radius:12px;background:var(--mint);display:grid;place-items:center;color:var(--green);font-weight:950}
+
+    section{padding:76px 0}
+    .section-head{max-width:790px;margin-bottom:34px}
+    .section-head h2{font-size:clamp(2.1rem,4.2vw,4rem);line-height:.96;letter-spacing:-.07em;color:var(--navy);margin:0 0 16px}
+    .section-head p{color:var(--muted);font-size:1.12rem;margin:0}
+
+    .mission{
+      background:linear-gradient(135deg,var(--navy),#113D66);
+      border-radius:42px;padding:clamp(30px,6vw,64px);color:white;box-shadow:var(--shadow);
+      position:relative;overflow:hidden;
+    }
+    .mission:before{content:"";position:absolute;width:330px;height:330px;border-radius:50%;background:rgba(56,189,248,.18);right:-100px;top:-100px}
+    .mission:after{content:"";position:absolute;width:280px;height:280px;border-radius:50%;background:rgba(34,197,94,.14);left:-120px;bottom:-130px}
+    .mission > *{position:relative;z-index:1}
+    .mission h2{font-size:clamp(2rem,4.5vw,4.2rem);line-height:.95;letter-spacing:-.07em;margin:0 0 20px}
+    .mission p{font-size:1.15rem;color:rgba(255,255,255,.86);max-width:980px}
+
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .card{
+      background:white;border:1px solid rgba(10,37,64,.08);border-radius:var(--radius);padding:26px;
+      box-shadow:var(--soft);transition:.2s ease;min-height:250px;
+    }
+    .card:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(10,37,64,.13)}
+    .icon{
+      width:54px;height:54px;border-radius:18px;background:var(--sky);display:grid;place-items:center;
+      font-size:1.45rem;margin-bottom:18px;
+    }
+    .card h3{color:var(--navy);font-size:1.2rem;margin:0 0 10px;letter-spacing:-.02em}
+    .card p{color:var(--muted);margin:0}
+
+    .split{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;align-items:start}
+    .founders{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .founder{
+      background:white;border-radius:var(--radius);padding:28px;box-shadow:var(--soft);border:1px solid rgba(10,37,64,.08)
+    }
+    .avatar{
+      width:70px;height:70px;border-radius:24px;
+      background:linear-gradient(135deg,var(--blue),var(--cyan),var(--green));
+      display:grid;place-items:center;color:white;font-weight:950;font-size:1.35rem;margin-bottom:18px;
+    }
+    .founder h3{margin:0 0 6px;color:var(--navy);font-size:1.35rem}
+    .role{color:var(--blue);font-weight:900;margin-bottom:14px}
+    .founder p{color:var(--muted);margin:0}
+
+    .impact-panel{
+      background:var(--sky);border:1px solid rgba(37,99,235,.14);border-radius:var(--radius);padding:30px;
+      position:sticky;top:100px;
+    }
+    .impact-panel h3{color:var(--navy);font-size:1.7rem;line-height:1.05;margin:0 0 18px;letter-spacing:-.04em}
+    .metric{background:white;border-radius:18px;padding:16px;margin-top:12px;border:1px solid rgba(10,37,64,.07)}
+    .metric strong{display:block;color:var(--navy);font-size:1.3rem}
+    .metric span{color:var(--muted);font-weight:700}
+
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:step}
+    .step{
+      background:white;border-radius:var(--radius);padding:28px;box-shadow:var(--soft);border:1px solid rgba(10,37,64,.08);
+      position:relative;overflow:hidden;
+    }
+    .step:before{
+      counter-increment:step;content:"0" counter(step);
+      display:grid;place-items:center;width:48px;height:48px;border-radius:16px;background:var(--navy);
+      color:white;font-weight:950;margin-bottom:24px;
+    }
+    .step h3{color:var(--navy);margin:0 0 10px;font-size:1.25rem}
+    .step p{color:var(--muted);margin:0}
+
+    .program{
+      background:white;border-radius:42px;padding:34px;box-shadow:var(--shadow);border:1px solid rgba(10,37,64,.08);
+      display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;
+    }
+    .lesson-list{display:grid;gap:12px}
+    .lesson{display:flex;gap:12px;align-items:flex-start;background:var(--cream);border-radius:18px;padding:16px;border:1px solid rgba(10,37,64,.07)}
+    .lesson b{color:var(--navy)}
+    .lesson span{color:var(--muted)}
+    .program-art{
+      min-height:360px;border-radius:30px;background:
+        linear-gradient(135deg,rgba(37,99,235,.18),rgba(34,197,94,.13)),
+        url('https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1200&q=80') center/cover;
+      position:relative;overflow:hidden;
+    }
+
+    .testimonial{
+      background:var(--navy);color:white;border-radius:42px;padding:48px;box-shadow:var(--shadow);
+      display:grid;grid-template-columns:.35fr 1fr;gap:30px;align-items:center;
+    }
+    .quote-mark{font-size:7rem;line-height:1;color:rgba(56,189,248,.55);font-weight:950}
+    .testimonial p{font-size:1.35rem;line-height:1.45;margin:0 0 16px;color:rgba(255,255,255,.9)}
+    .testimonial span{color:rgba(255,255,255,.65);font-weight:800}
+
+    .contact-wrap{
+      background:linear-gradient(135deg,var(--blue),#0F3A5D);
+      border-radius:42px;padding:clamp(28px,5vw,58px);color:white;box-shadow:var(--shadow);
+      display:grid;grid-template-columns:1fr .9fr;gap:34px;align-items:center;
+    }
+    .contact-wrap h2{font-size:clamp(2.1rem,4.4vw,4rem);line-height:.95;letter-spacing:-.07em;margin:0 0 16px}
+    .contact-wrap p{color:rgba(255,255,255,.84);font-size:1.12rem}
+    .contact-box{background:white;color:var(--ink);border-radius:28px;padding:26px;box-shadow:0 20px 50px rgba(10,37,64,.20)}
+    label{display:block;color:var(--navy);font-weight:900;margin:0 0 7px;font-size:.9rem}
+    input,textarea,select{
+      width:100%;border:1px solid var(--line);border-radius:16px;padding:14px 15px;margin-bottom:14px;
+      font:inherit;background:#FBFDFF;outline:none;
+    }
+    textarea{min-height:118px;resize:vertical}
+    input:focus,textarea:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(37,99,235,.12)}
+
+    footer{padding:38px 0;border-top:1px solid var(--line);color:var(--muted)}
+    .foot{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+    .foot strong{color:var(--navy)}
+
+    @media(max-width:980px){
+      .hero-grid,.split,.program,.contact-wrap,.testimonial{grid-template-columns:1fr}
+      .cards{grid-template-columns:repeat(2,1fr)}
+      .links{display:none}
+      .visual-inner{min-height:430px}
+      .impact-panel{position:relative;top:auto}
+    }
+    @media(max-width:640px){
+      .container{padding:0 18px}
+      .nav{height:68px}
+      .cards,.founders,.steps{grid-template-columns:1fr}
+      .hero{padding:48px 0 36px}
+      .hero-actions{flex-direction:column}
+      .btn{width:100%}
+      .visual-inner{min-height:360px}
+      .fc1,.fc2{display:none}
+      .testimonial{padding:32px}
+      .quote-mark{font-size:4rem}
+      section{padding:56px 0}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#">
+        <span class="mark">G</span>
+        <span>GenTech</span>
+      </a>
+      <nav class="links" aria-label="Main navigation">
+        <a href="#mission">Mission</a>
+        <a href="#services">Services</a>
+        <a href="#program">Program</a>
+        <a href="#founders">Founders</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn" href="#contact">Request a Visit</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Nonprofit tech support for seniors</div>
+          <h1>Helping seniors feel confident in a digital world.</h1>
+          <p class="lead">
+            GenTech is a student-founded nonprofit serving communities across the DMV Area.
+            We teach older adults how to use technology to stay connected, independent, safe,
+            and engaged.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="#contact">Bring GenTech to Your Community</a>
+            <a class="btn ghost" href="#program">Explore the Program</a>
+          </div>
+          <div class="trust-row">
+            <span class="pill">Founded by Henry Carter & Ajay Majmudar</span>
+            <span class="pill">Patient, hands-on instruction</span>
+            <span class="pill">Phones, tablets, computers & online safety</span>
+          </div>
+        </div>
+
+        <div class="visual" aria-label="Senior technology support illustration">
+          <div class="visual-inner">
+            <div class="floating-card fc1">
+              <strong>“How do I video call my family?”</strong>
+              <span>We teach it step-by-step.</span>
+            </div>
+            <div class="floating-card fc2">
+              <strong>Confidence over confusion</strong>
+              <span>Friendly support for everyday tech.</span>
+            </div>
+            <div class="floating-card fc3">
+              <span class="check">✓</span>
+              <div>
+                <strong>DMV Area</strong>
+                <span>Senior communities</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mission">
+      <div class="container">
+        <div class="mission">
+          <div class="eyebrow" style="color:#9BE7FF">Our Mission</div>
+          <h2>Bridging the gap between modern technology and its usage by senior citizens.</h2>
+          <p>
+            GenTech is a nonprofit organization that serves communities across the DMV Area.
+            Our primary mission is to bridge the gap between modern technology and its usage
+            by senior citizens.
+          </p>
+          <p>
+            At GenTech, we believe that teaching the ability to use technology to senior
+            citizens will help them further connect with family and friends, continue lifelong
+            learning, maintain greater independence in their daily lives, improve quality of
+            life, and accomplish more than what they thought would be possible.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">What we help with</div>
+          <h2>Practical technology lessons that make daily life easier.</h2>
+          <p>GenTech focuses on real-world skills: the things seniors want and need to use every day.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="icon">📱</div>
+            <h3>Phones & Tablets</h3>
+            <p>Texting, FaceTime, contacts, photos, app downloads, settings, accessibility features, and troubleshooting.</p>
+          </article>
+          <article class="card">
+            <div class="icon">👨‍👩‍👧</div>
+            <h3>Family Connection</h3>
+            <p>Video calls, sharing photos, email, group chats, and simple ways to stay close to family and friends.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🔐</div>
+            <h3>Online Safety</h3>
+            <p>Password basics, scam awareness, suspicious links, privacy settings, and safer internet habits.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🧭</div>
+            <h3>Everyday Independence</h3>
+            <p>Maps, calendars, reminders, online forms, transportation apps, telehealth basics, and useful websites.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="program">
+      <div class="container">
+        <div class="program">
+          <div>
+            <div class="eyebrow">The GenTech Program</div>
+            <div class="section-head" style="margin-bottom:22px">
+              <h2>Designed to be clear, calm, and confidence-building.</h2>
+              <p>Sessions can be run as one-on-one help, small-group lessons, or open tech-support hours.</p>
+            </div>
+            <div class="lesson-list">
+              <div class="lesson"><span class="check">✓</span><div><b>Step-by-step teaching</b><br><span>No rushing, no jargon, no judgment.</span></div></div>
+              <div class="lesson"><span class="check">✓</span><div><b>Personalized help</b><br><span>Seniors can bring their own devices and questions.</span></div></div>
+              <div class="lesson"><span class="check">✓</span><div><b>Printed take-home guides</b><br><span>Simple instructions seniors can refer back to later.</span></div></div>
+            </div>
+          </div>
+          <div class="program-art" role="img" aria-label="Volunteers helping in a community setting"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="founders">
+      <div class="container split">
+        <div class="impact-panel">
+          <div class="eyebrow">Why it matters</div>
+          <h3>Technology can reduce isolation, increase independence, and open new possibilities.</h3>
+          <div class="metric"><strong>Connection</strong><span>Video calls, messages, photos, and email</span></div>
+          <div class="metric"><strong>Confidence</strong><span>Clear practice with patient support</span></div>
+          <div class="metric"><strong>Independence</strong><span>Tools for daily tasks, safety, and learning</span></div>
+        </div>
+        <div>
+          <div class="section-head">
+            <div class="eyebrow">Meet the founders</div>
+            <h2>Built by students who care about service and community.</h2>
+          </div>
+          <div class="founders">
+            <article class="founder">
+              <div class="avatar">HC</div>
+              <h3>Henry Carter</h3>
+              <div class="role">Co-Founder</div>
+              <p>Henry co-founded GenTech to help seniors feel more comfortable with technology through patient, practical, person-to-person support.</p>
+            </article>
+            <article class="founder">
+              <div class="avatar">AM</div>
+              <h3>Ajay Majmudar</h3>
+              <div class="role">Co-Founder</div>
+              <p>Ajay co-founded GenTech to make modern technology more accessible and empowering for older adults across the DMV Area.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">How it works</div>
+          <h2>Simple for senior communities to host.</h2>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <h3>Schedule a session</h3>
+            <p>A senior residence, community center, or family member contacts GenTech to coordinate a visit.</p>
+          </article>
+          <article class="step">
+            <h3>Choose focus areas</h3>
+            <p>We identify common questions: phones, video calls, photos, online safety, apps, or everyday digital tools.</p>
+          </article>
+          <article class="step">
+            <h3>Learn by doing</h3>
+            <p>Seniors practice directly on their own devices with friendly, individualized support from GenTech volunteers.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="testimonial">
+          <div class="quote-mark">“</div>
+          <div>
+            <p>Technology should make life easier, not more frustrating. GenTech exists to give seniors the confidence to use the digital tools that help them connect, learn, and live more independently.</p>
+            <span>— GenTech</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-wrap">
+          <div>
+            <div class="eyebrow" style="color:#B9F7D0">Contact</div>
+            <h2>Interested in bringing GenTech to your community?</h2>
+            <p>
+              Contact us to schedule a visit, ask about volunteer opportunities, or learn more about the GenTech program.
+            </p>
+            <p><strong>Email:</strong> gentechdmv@example.com</p>
+          </div>
+          <form class="contact-box" action="mailto:gentechdmv@example.com" method="post" enctype="text/plain">
+            <label for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name" />
+            <label for="org">Organization / Community</label>
+            <input id="org" name="organization" placeholder="Senior residence, school, or community" />
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="your@email.com" />
+            <label for="interest">I am interested in...</label>
+            <select id="interest" name="interest">
+              <option>Scheduling a visit</option>
+              <option>Volunteering</option>
+              <option>Partnering with GenTech</option>
+              <option>Learning more</option>
+            </select>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us how GenTech can help."></textarea>
+            <button class="btn dark" type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div><strong>GenTech</strong> © 2026. Founded by Henry Carter and Ajay Majmudar.</div>
+      <div>Serving senior communities across the DMV Area.</div>
+    </div>
+  </footer>
+</body>
+</html>
