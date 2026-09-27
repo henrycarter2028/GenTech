@@ -221,6 +221,46 @@
     textarea{min-height:118px;resize:vertical}
     input:focus,textarea:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(37,99,235,.12)}
 
+    .tutorial-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.tutorial{
+  background:white;
+  border:1px solid rgba(10,37,64,.08);
+  border-radius:28px;
+  padding:18px;
+  box-shadow:var(--soft);
+}
+
+.tutorial iframe{
+  width:100%;
+  aspect-ratio:16/9;
+  border:0;
+  border-radius:18px;
+}
+
+.tutorial h3{
+  color:var(--navy);
+  margin:18px 0 6px;
+  font-size:1.2rem;
+}
+
+.tutorial p{
+  color:var(--muted);
+  margin:0;
+}
+
+@media(max-width:800px){
+  .tutorial-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+
+    
     footer{padding:38px 0;border-top:1px solid var(--line);color:var(--muted)}
     .foot{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
     .foot strong{color:var(--navy)}
@@ -253,12 +293,13 @@
       <a class="brand" href="#">
     <img src="logo.png" alt="GenTech Logo" style="height:55px;">
 </a>
-      <nav class="links" aria-label="Main navigation">
-        <a href="#mission">Mission</a>
-        <a href="#services">Services</a>
-        <a href="#program">Program</a>
-        <a href="#founders">Founders</a>
-        <a href="#contact">Contact</a>
+  <nav class="links" aria-label="Main navigation">
+    <a href="#mission">Mission</a>
+    <a href="#services">Services</a>
+    <a href="#program">Program</a>
+    <a href="#tutorials">Tutorials</a>
+    <a href="#founders">Founders</a>
+    <a href="#contact">Contact</a>
       </nav>
       <a class="btn" href="#contact">Request a Visit</a>
     </div>
@@ -380,6 +421,30 @@
       </div>
     </section>
 
+
+
+
+    
+       <div class="tutorial">
+        <iframe
+          src="https://www.youtube.com/embed/VIDEO_ID"
+          title="How to Avoid Online Scams"
+          allowfullscreen>
+        </iframe>
+        <h3>How to Avoid Online Scams</h3>
+        <p>Learn how to recognize suspicious messages and links.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+    
     <section id="founders">
       <div class="container split">
         <div class="impact-panel">
